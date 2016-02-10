@@ -1,0 +1,361 @@
+@charset "utf-8";
+body {
+	background-color:#666;
+	background-image:url(../images/body_background.png);
+}
+a	{
+	text-decoration: none;
+	color: #F0F;
+	font-weight: bold;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+a:hover	{
+	color: red;	
+}
+.clear	{
+	clear: both;	
+}
+#head	{
+	width: 800px;
+	height: 120px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	margin: auto;
+	background-image:url(../images/content_background.png);
+	padding: 10px;
+	border: 2px solid #fff;
+}
+#head #logo	{
+	width: 117px;
+	height: 90px;
+	padding: 5px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	background-color:#F9F;
+	margin-top: 5px;
+	margin-left: 10px;
+	border: 2px solid #FFF;
+}
+#head #logo div	{
+	margin-left: -2px;
+	width: 150px;
+	font-size: .6em;
+	font-weight: bold;
+	line-height: 30px;
+
+}
+#head #navi	{
+	width: 600px;
+	float: right;
+	margin-top: -50px;
+	border-bottom: 1px solid #666;
+}
+#head #navi a	{
+	text-shadow: 1px 1px #000;
+}
+#head #navi div	{
+	width: 100px;
+	float: left;
+	text-align: center;
+	-moz-border-radius: 13px;
+	-webkit-border-radius: 13px;
+	-o-border-radius: 13px;
+	border-radius: 13px;
+	
+}
+#head #navi div a div:hover	{
+	background-color:#fff;	
+}
+
+#nasty_iframe	{
+	width: 825px;
+	height: 385px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	margin-top: 10px;
+	-moz-border-radius: 1.1em;
+	-webkit-border-radius: 1.1em;
+	-o-border-radius: 1.1em;
+	border-radius: 1.1em;
+	overflow: hidden;
+}
+
+#content1	{
+	width: 800px;
+	height: 360px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	margin: auto;
+	background-image:url(../images/content_background.png);
+	padding: 10px;
+	border: 2px solid #fff;
+	
+
+}
+#content1 #show_here	{
+	width: 750px;
+	height: 300px;
+	margin: auto;
+
+}
+#content1 #show_here #pic_here	{
+	width: 750px;
+	height: 300px;
+	margin: auto;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	overflow: hidden;
+}
+#content1 #wrapper_btn	{
+	margin-top: 10px;
+	width: 759px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#content1 #wrapper_btn div	{
+	border: 1px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+#content1 .btn1	{
+	width: 125px;
+	height: 50px;
+	cursor: pointer;
+	background-image: url(../images/bags01_thumb.jpg);
+	float: left;
+	
+}
+#content1 .btn2	{
+	width: 125px;
+	height: 50px;
+	cursor: pointer;
+	background-image: url(../images/bags02_thumb.jpg);
+	float: left;
+	margin-left: 31px;
+}
+#content1 .btn3{
+	width: 125px;
+	height: 50px;
+	cursor: pointer;
+	background-image: url(../images/bags03_thumb.jpg);
+	float: left;
+	margin-left: 31px;
+}
+#content1 .btn4	{
+	width: 125px;
+	height: 50px;
+	cursor: pointer;
+	background-image: url(../images/bags04_thumb.jpg);
+	float: left;
+	margin-left: 31px;
+}
+#content1 .btn5	{
+	width: 125px;
+	height: 50px;
+	cursor: pointer;
+	background-image: url(../images/bags05_thumb.jpg);
+	float: left;
+	margin-left: 31px;
+}
+
+#content2	{
+	width: 800px;
+	min-height: 50px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url(../images/content_background.png);
+	padding: 10px;
+	border: 2px solid #fff;
+	overflow: auto;
+	margin-top: 10px;
+
+}
+#content2 #col1	{
+	width: 250px;
+	
+	min-height: 300px;
+	float: left;
+	padding: 10px;
+}
+
+#content2 #col1 #uni	{
+	border: 1px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	width: 230px;
+	min-height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	padding: 5px;
+	background-image:url(../images/content_background.png);
+	color: #F30; 
+	font-weight: bolder;
+}
+#content2 #col1 #uni:first-of-type	{
+	margin-top: -10px;	
+}
+
+
+#content2 #col1 #uni #cal2	{
+	background-color: #000;
+	width: 200px;
+	margin: auto;
+}
+#contents #col1 #uni ul	{
+	display: inline;
+	padding: 0px;
+	margin-left: -10px;
+}
+#content2 #col1 #uni ul li	{
+	list-style: none;
+	display: block;
+	border-bottom: 1px dotted #fff;
+	padding: 0px;
+	margin-left: -30px;
+	line-height: 40px;
+}
+#content2 #col1 #uni ul li a	{
+	font-size: .9em;
+	font-weight: normal;
+}
+
+
+#content2 #col1 #uni ul li:first-of-type	{
+	border-top: 1px dotted #fff;	
+}
+
+
+
+#content2 #col2	{
+	width: 510px;
+	min-height: 300px;
+	float: right;
+	border: 1px solid #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	background-image:url(../images/content_background.png);
+	color: #000; 
+	font-weight: bolder;
+	padding: 5px;
+}
+#content2 #col2 #holder	{
+	margin-top: 20px;
+	background-image:url(../images/col2_holder_background1.png);
+	width: 500px;
+	min-height: 30px;
+	
+	
+}
+#content2 #col2 #holder:nth-child(2n+2)	{
+	background-image:url(../images/col2_holder_background2.png);	
+}
+#content2 #col2 #holder #image_area	{
+	width: 200px;
+	float: left;
+}
+#content2 #col2 #holder #contents	{
+	width: 290px;
+	height: auto;
+	float: left;
+	
+	padding-left: 5px;
+	padding-right: 5px;
+	
+}
+#content2 #col2 #holder #contents h3	{
+	color: #F30; 
+	border-bottom: 1px solid #fff;
+}
+#content2 #col2 #holder #contents p	{
+	font-size: .9em;
+	font-weight: normal;
+	line-height: 20px;
+}
+#content2 #col2 #holder #more	{
+	width: 200px;
+	height: 30px;
+	background-image:url(../images/arrow.png);
+	margin: auto;
+	color: white;
+	text-indent: 40px;
+	line-height: 30px;
+}
+#content2 #col2 #holder #swatches	{
+	margin: auto;
+	width: 300px;
+
+}
+#content2 #col2 #holder p	{
+	font-size: .9em;
+	font-weight: normal;
+	line-height: 20px;	
+	padding: 5px;
+}
+#content2 #footer	{
+	width: 500px;
+	text-align: center;
+	margin: auto;
+	line-height: 50px;
+}
+
+
+
+.main {
+width:200px;
+border:1px solid pink;
+}
+
+.month {
+background-color:#F0F;
+font:bold 12px verdana;
+color:white;
+}
+
+.daysofweek {
+background-color:gray;
+font:bold 12px verdana;
+color:white;
+}
+
+.days {
+font-size: 12px;
+font-family:verdana;
+color:#F0F;
+background-color: lightyellow;
+padding: 2px;
+}
+
+.days #today{
+font-weight: bold;
+color: red;
+}
+
+
+
+

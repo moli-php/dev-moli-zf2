@@ -1,0 +1,17 @@
+.btn_hover:hover {background-color:#ccc}
+.answer_picked {background-color:#ccc}
+.green {color:green}
+.red {color:red}
+.this_hide {display:none;}
+.wrong_answer {background-color:#ebccd1}
+.right_answer {background-color:#d6e9c6}
+.no_answer {background-color:#FCEA9A}
+.user_answer {border:2px solid #fea200}
+.box {display:inline-block;padding:5px 5px}
+.hide_me{display:none;}
+.width_50 {width:50%;float:left;}
+.clear-float {clear:both}
+
+#option_container {
+    text-align:center;
+}

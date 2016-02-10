@@ -1,0 +1,88 @@
+<div id="forum_forms">
+    <h4 class="col-md-12" id="search_form">
+        <div class="col-md-4">
+            Forum: &nbsp;<i>Welcome <?= $name ?></i>&nbsp;
+            <small>
+                (backbone.js)
+                <a href="<?= $this->url('backbone-js-blog-register-login', array('action' => 'logout')); ?>">Logout?</a>
+            </small>
+        </div>
+        <div class="col-md-8">
+            <?php $searchForm->prepare(); ?>
+            <?= $this->form()->openTag($searchForm); ?>
+            <?= $this->formInput($searchForm->get('blog_search')); ?>
+            <?= $this->form()->closeTag(); ?>
+        </div>
+    </h4>
+    <br />
+    <br />
+    <hr />
+
+    <?php
+    $form = $this->form;
+    $form->get('name')->setAttribute('value', $name);
+    $form->get('user_id')->setAttribute('value', $user_id);
+    $form->get('username')->setAttribute('value', $username);
+    $form->prepare();
+    ?>
+
+    <div id="add_form">
+        <?= $this->form()->openTag($form); ?>
+        <?= $this->formInput($form->get('name')); ?>
+        <?= $this->formInput($form->get('user_id')); ?>
+        <?= $this->formInput($form->get('username')); ?>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('message')); ?>
+            <div class="col-md-4">
+                <?= $this->formInput($form->get('message')); ?>
+            </div>
+            <div class="col-md-1">
+                <?= $this->formInput($form->get('submit')); ?>
+            </div>
+        </div>
+        <?= $this->form()->closeTag(); ?>
+    </div>
+</div>
+
+<!-- Backbone Templates -->
+<?= $this->partial('/backbone-js-blog/blog/template/template.phtml'); ?>
+
+<!-- view area -->
+<div class="col-md-12 panel-group" id="forum_container"></div>
+
+<!-- pagination -->
+<div id="paginator_view" class="col-md-12">
+    <ul class="pagination"></ul>
+</div>
+
+<!-- initial backbone data -->
+<script>
+    var forumData = $.parseJSON('<?= json_encode($this->forum); ?>');
+    forumData = _(forumData).sortBy(function(obj) { return -obj.id });
+    var username_id = '<?= $user_id ?>';
+</script>
+
+<!-- backbone source logic -->
+<script src="<?= $this->basePath(); ?> /samples/backbone-js-blog/js/blog.js"></script>
+
+<!-- backbone instantiations -->
+<script>
+    var forumCollection = new App.Collection.Forum(forumData);
+    var forumCollectionCopy = new App.Collection.Forum(forumData);
+    new App.View.Forum({
+        collection: forumCollection, 
+        el : $('#forum_container'), 
+        routeModel : routeModel,
+        paginatorModel : new App.Model.PaginatorModel
+    });
+    new App.View.Paginator({
+        collection: forumCollection, 
+        routeModel : routeModel, 
+        paginatorModel : new App.Model.PaginatorModel,
+        el : $('#paginator_view ul')
+    });
+    new App.View.Forms({
+        collection: forumCollection, 
+        collectionCopy : forumCollectionCopy
+    });
+</script>

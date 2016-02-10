@@ -1,0 +1,114 @@
+<script>
+    $(function(){
+        // search input
+        $('#search_box').keyup(function(){
+            var this_text = $(this).val();
+            this_text = this_text.toLowerCase();
+            var target = $('#accordion > div');
+		
+            $.each(target,function(k,v){
+                var obj = $(v);
+                var target_text = $(v).find('h4').text();
+                target_text = target_text.toLowerCase();
+
+                if(target_text.indexOf(this_text) != -1){
+                    obj.removeClass('hide');
+                }else{
+                    obj.addClass('hide');
+                }
+            });
+        });
+    });
+</script>
+<div class="container">
+    <div class="page-header">
+        <h2>Purchase <small>Group by customers</small></h2>
+    </div>
+    <?php
+    if ($customersPurchases) {
+        ?>
+        <div id='accordion' class='panel-group'>
+            <?php
+            foreach ($customersPurchases as $k => $customer) {
+                ?>
+                <div class='panel panel-success'>
+                    <div class='panel-heading'>
+                        <h4>
+                            <a href='#section<?= $customer->id ?>' data-parent='#accordion' data-toggle='collapse' class='collapsed'>
+                                <?= $customer->first_name . " " . $customer->last_name ?>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class='panel-collapse collapse' id='section<?= $customer->id; ?>'>
+                        <div class='panel-body'>
+                            <table class="table table-condensed ">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>	
+                                        <th>Total</th>
+                                        <th>Balance</th>
+                                        <th >Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <?php
+                                if (count($customer->purchases)) {
+                                    ?>
+                                    <tbody>               
+                                        <?php
+                                        $total_balance = 0;
+                                        foreach ($customer->purchases as $key => $purchase) {
+                                            $key++;
+                                            $total = $this->format_decimal($purchase->quantity * $purchase->price);
+                                            $paid_amount = $this->format_decimal($purchase->paid_amount);
+                                            $balance = $this->format_decimal($total - $paid_amount);
+                                            $total_balance += $balance;
+                                            $color = array('danger', 'success', 'warning');
+                                            $paynow = ($purchase->status != 1) ? "<a class='btn btn-primary' href='" . $this->url('order-entry', array('action' => 'customer-payment', 'id' => $purchase->id)) . "'>Pay Now</a>" : "<span class='btn disabled'>Paid</span>";
+                                            ?>
+                                            <tr class='<?= $color[$purchase->status]; ?>'>
+                                                <td ><?= $key; ?></td>
+                                                <td><?= $purchase->product; ?></td>
+                                                <td><?= $purchase->price; ?></td>
+                                                <td><?= $purchase->quantity; ?></td>								
+                                                <td><?= $total; ?></td>
+                                                <td><?= $balance; ?></td>
+                                                <td><?= $purchase->date; ?></td>
+                                                <td><?= $paynow; ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                    <tfoot style='padding:0px'>
+                                        <tr>
+                                            <td colspan='6' align='right'>Total Balance</td>
+                                            <td colspan='2'><?= $total_balance; ?></td>
+                                        </tr>
+                                    </tfoot>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <tbody><tr><td colspan='8' align='center'>No transaction's yet</td></tr></tbody>
+                                    <?php
+                                }
+                                ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    } else {
+        ?>
+        <h3>No record yet.</h3>
+        <?php
+    }
+    ?>
+</div>

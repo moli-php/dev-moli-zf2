@@ -1,0 +1,266 @@
+body	{
+	margin: 0px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size: .9em;
+	background-image: url(../images/lv.gif);
+}
+a	{
+	text-decoration: none;
+}
+a:hover	{
+	text-decoration: underline;	
+	color: #E68F0F;
+	text-shadow: 1px 1px #000;
+}
+.clear	{
+	clear: both;	
+}
+#navi_holder	{
+	width: 100%;
+	height: 35px;
+	background-image:url(../images/gold_background2.gif);
+	background-repeat:repeat-x;
+	margin: auto;
+}
+
+#navi_holder #navi	{
+	width: 900px;
+	height: 35px;
+	background-image:url(../images/gold_background2.gif);
+	background-repeat:repeat-x;
+	margin: auto;
+
+}
+#navi_holder #navi div:first-of-type	{
+	width: 140px;
+	float: left;
+}
+#navi_holder #navi div:last-of-type	{
+	
+	width: 60px;
+	float: right;
+	
+}
+#navi_holder #navi ul	{
+	list-style: none;
+	width: 400px;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+#navi_holder #navi ul li	{
+	list-style: none;
+	display: inline-block;
+	margin: 0px;
+	padding: 10px;
+	
+}
+#head_holder	{
+	height: 100px;
+	width: 100%;
+	background-image:url(../images/white50.png);
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+
+#head_holder #head	{
+	font-weight: bold;
+	font-size: 1.5em;
+	width: 900px;
+	height: 100px;
+	background-image:url(../images/head_image.jpg);
+	background-repeat:repeat-x;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 100px;
+}
+#head_holder #head #head_text	{
+	width: 900px;
+	height: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	line-height: 60px;
+	top: 20px;
+	position: relative;
+	background-image:url(../images/white50.png);
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+
+
+
+
+
+#content_holder	{
+	width: 100%;
+	min-height: 500px;	
+}
+#content_holder	#content	{
+	width: 900px;
+	min-height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+	background-image:url(../images/white50.png);
+}
+#footer_holder	{
+	width: 100%;
+	height: 35px;
+	background-image:url(../images/gold_background.gif);
+	background-repeat:repeat-x;
+}
+#footer_holder #footer	{
+	width: 900px;
+	height: 35px;
+	background-image:url(../images/gold_background.gif);
+	background-repeat:repeat-x;
+	line-height: 35px;
+	margin: auto;
+	text-align: center;
+	font-size: .8em;
+}
+
+
+
+
+
+
+/*************************** home *********************************/
+#content_holder	#content .products	{
+	width: 599px;
+	min-height: 600px;
+	float: left;
+	border-right: 1px solid #CCC;
+}
+#content_holder	#content .products #prod	{
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #eee;
+
+}
+#content_holder	#content .products #image_hover:hover	{
+	opacity: .5;	
+}
+
+#content_holder	#content .products .pad	{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#content_holder	#content .products .pad:nth-child(2)	{
+	font-weight: bold;	
+}
+
+#content_holder	#content .products #pagi	{
+	width:auto;
+	min-height: 20px;
+	background-color: #ccc;
+	padding: 0 5px;
+}
+
+
+#content_holder	#content #right	{
+	width: 300px;
+	min-height: 100px;
+	float: right;
+	padding: 10px 0 10px 0;
+	
+}
+#content_holder	#content #right	#search{
+	width: 200px;
+	height: 50px;
+	background-image:url(../images/white50.png);
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 35px 10px 35px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	border: 1px solid #fff;	
+	margin-bottom: 10px;
+	
+}
+#content_holder	#content #right	#search #text	{
+	width: 155px;
+	float: left;
+	
+}
+#content_holder	#content #right	#search #btn	{
+	margin-left:1px;
+	width: 40px;
+	float: left;	
+}
+#content_holder	#content #right #calendar	{
+	width: 200px;
+	height: 156px;
+	background-image:url(../images/white50.png);
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 35px 10px 35px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	border: 1px solid #fff;
+	
+}
+#content_holder	#content .ams	{
+	width: 250px;
+	min-height: 200px;
+	float: right;
+	background-image: url(../images/white50.png);
+	margin-right: 15px;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+	border: 1px solid #fff;
+	padding: 5px 10px;
+	font-size: .8em;
+}
+
+
+
+
+
+
+
+
+
+
+
+/****************************CALENDAR*************************/
+.main {
+width:200px;
+border:1px solid #F0BA84;
+}
+
+.month {
+background-color:#F90;
+font:bold 12px verdana;
+color:white;
+}
+
+.daysofweek {
+background-color:gray;
+font:bold 12px verdana;
+color:white;
+}
+
+.days {
+font-size: 12px;
+font-family:verdana;
+color:#999;
+background-color: lightyellow;
+padding: 2px;
+}
+
+.days #today{
+font-weight: bold;
+color: red;
+}
+/**********************************END CALENDAR*****************************/

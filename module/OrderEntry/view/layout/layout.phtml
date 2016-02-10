@@ -1,0 +1,73 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Moli-Site | ' . $this->translate('something soon'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+        ?>
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon-moli.ico'))
+                ->prependStylesheet($this->basePath() . '/samples/order-entry/css/style.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css');
+        ?>
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/samples/order-entry/js/js.js')
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery.min.js')
+                ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
+    </head>
+    <body>
+        <img id="img_con"class="absolute-center hide" src="<?php echo $this->basePath() . '/samples/order-entry/img/ajax_loader.gif'; ?>" />
+        <?php $breadCrumb = explode("/", $uri_path); ?>
+        <?php echo $this->partial('/layout/partials/nav.phtml', array('page' => $page, 'breadCrumb' => $breadCrumb)); ?>
+        <?php echo $this->partial('/layout/partials/breadcrumb.phtml', array('breadCrumb' => $breadCrumb)); ?>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+        </div>
+
+        <!-- Modals -->
+        <div class="modal fade" id="errorModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header my-modal-danger" style="">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Error</h4>
+                    </div>
+                    <div class="modal-body" id="errorModalBody">
+                        error msg
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="successModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header my-modal-success" style="">
+                        <h4 class="modal-title" id="myModalLabel">Success</h4>
+                    </div>
+                    <div class="modal-body" id="successModalBody">
+                        success msg
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-close-callsback">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden" id="order_entry_base_url"><?= $this->url('order-entry-api'); ?></div>
+        <div class="hidden" id="order_entry_site_url"><?= $this->url('order-entry'); ?></div>
+        <script src='<?= $this->basePath(); ?>/samples/order-entry/js/api.js'></script>
+    </body>
+</html>

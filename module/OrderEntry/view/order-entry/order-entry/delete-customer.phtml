@@ -1,0 +1,61 @@
+<script>
+    $(function(){
+        $('#delete_customer').click(function(){
+            var id = $('#cust_id').val();
+            var data = {id : id};
+            var result = api.deleteCustomer(data);
+            if(result.response == 200) {
+                helper.success_msg('Customer successfully delete.');
+            }else{
+                helper.check_error(['Internal error.']);
+            }
+        });
+
+        $('#modal-close-callsback').click(function(){
+            window.location = api.site_url;
+        });
+    });
+</script>
+<div class="container">
+    <h2>Delete Customer</h2><br>
+    <div class="row">
+        <?php
+        if ($customer) {
+            if ($customer) {
+                $gender = ($customer->gender == "male") ? "his" : "her";
+                ?>
+                <div class="col-md-5">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h4><?php echo $customer->first_name . " " . $customer->last_name; ?></h4>
+                            <p><b class='text-danger'>Warning:</b> Deleting this customer will also delete all <?php echo $gender; ?> transactions.</p>
+                            <a class='btn btn-danger' href='#' id="delete_customer">Delete</a>
+                            <a class='btn btn-default' href='<?= $this->url('order-entry'); ?>'>Cancel</a>
+                            <input type="hidden" id="cust_id" value="<?php echo $customer->id; ?>" />
+                        </div>
+                    </div>
+
+                </div>
+                <?php
+            } else {
+                echo "<h4>No Record Found</h4>";
+            }
+        } else {
+
+            if ($customers) {
+                foreach ($customers as $val) {
+                    ?>
+                    <div class='col-md-6'>
+                        <div class='panel panel-danger'>
+                            <div class='panel-heading'><a href='<?= $this->url('order-entry', array('action' => 'delete-customer', 'id' => $val->id)); ?>'><?= $val->first_name . " " . $val->last_name; ?></a></div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            } else {
+                echo "<h4>No Record Yet</h4>";
+            }
+        }
+        ?>
+    </div>
+</div>

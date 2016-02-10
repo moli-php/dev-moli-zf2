@@ -1,0 +1,62 @@
+<script>
+    $(function(){
+        $('#delete_product').click(function(){
+            var data = {id:$('#prod_id').val()};
+            var result = api.deleteProduct(data)
+            if(result.response == 200) {
+                helper.success_msg('Product successfully delete.');
+            }else{
+                helper.check_error(['Internal error.']);
+            }
+        });
+
+        $('#modal-close-callsback').click(function(){
+            window.location = api.site_url+ '/product';
+        });
+
+    });
+</script>
+<div class="container">
+    <h2>Delete Product</h2><br>
+    <div class="row">
+        <?php
+        if ($product) {
+            ?>
+            <div class="col-md-5">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h4><?php echo $product->product; ?></h4>
+                        <p><b class='text-danger'>Warning:</b> Deleting this product will also delete all connected transactions.</p>
+                        <a class='btn btn-danger' id="delete_product" href='#'>Delete</a>
+                        <a class='btn btn-default' href='<?= $this->url('order-entry', array('action' => 'product')); ?>'>Cancel</a>
+                        <input type="hidden" value="<?php echo $product->id; ?>" id="prod_id" />
+                    </div>
+                </div>
+
+            </div>
+            <?php
+        } else {
+            if ($products) {
+                foreach ($products as $val) {
+                    ?>
+                    <div class='col-md-6'>
+                        <div class='panel panel-danger'>
+                            <div class='panel-heading'><a href='<?= $this->url('order-entry', array('action' =>'delete-product', 'id' => $val->id)); ?>'><?= $val->product; ?></a></div>
+                        </div>
+                    </div>
+            <?php
+        }
+    } else {
+        ?>
+        <h4>No Record Yet</h4>
+        <?php
+    }
+}
+?>
+
+
+
+
+
+    </div>
+</div>

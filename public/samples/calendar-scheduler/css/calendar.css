@@ -1,0 +1,47 @@
+ul {list-style-type:none;padding:0;margin:0}
+#holder {
+width:352px;position:relative;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+margin-left:auto;margin-right:auto;
+}
+#holder {*width:350px;}
+
+#holder .days {width:50px;height:50px;border:1px black solid;display:inline-block;}
+#holder .box {width:50px;height:50px;border:1px black solid;display:inline-block;}
+.days {cursor:pointer}
+.days:hover {background-color:#ccc}
+.week_days {width:50px;height:20px;border:1px tan solid;display:inline-block;text-align:center;background:#beacff;}
+.week_ends {width:50px;height:20px;border:1px tan solid;display:inline-block;text-align:center;background:#ffacec;}
+.today {background:#FFAD1F}
+#month_title {color:#4DB056;font-wieght:bold;font-size:1.5em;width:251px;}
+#left_navi {width:50px; cursor:pointer}
+#right_navi {width:50px; cursor:pointer}
+.insert_dialog {display:none; font: 62.5% "Trebuchet MS", sans-serif;}
+#list_dialog {display:none; font: 62.5% "Trebuchet MS", sans-serif;}
+#delete_confirm_dialog {display:none; font: 80.5% "Trebuchet MS", sans-serif;text-align:center;}
+.ui-dialog-title {font: 62.5% "Trebuchet MS", sans-serif;}
+.ui-dialog-buttonset {font: 62.5% "Trebuchet MS", sans-serif;}
+#list_table_record {width:100%}
+#list_table_record tr td {text-align:center}
+.numDate {width:100%;display:block;padding-left:4px}
+.numDate2 {width:100%;display:block;text-align:center;color:#5460FF;font-size:.9em;}
+table td {cursor:pointer}
+
+.form_to {width:50%}
+.float_left {float:left}
+.to_responsive_width {width:112%;}
+
+.padding_left_10 {padding-left:10px}
+.padding_left_0 {padding-left:0px}
+
+@media(max-width: 767px){
+    .form_to_responsive {width:100%;}
+    .padding_left_10, .padding_left_0 {padding-left:15px;}
+    .to_responsive_width {width:100%;}
+    
+}

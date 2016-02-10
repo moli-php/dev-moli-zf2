@@ -1,0 +1,50 @@
+<div id="main_con">
+    <div id="form_con">
+        <form role="form" class="form-horizontal">
+            <div class="col-md-12 search_con">
+                <select class="form-control" id="categories">
+                    <?php
+                    if ($caterogies = $this->categories) {
+                        foreach ($caterogies as $key => $category) {
+                            ?>
+                            <option><?= $category['name']; ?></option>
+                            <?php
+                        }
+                    }
+                    ?>
+                </select>
+
+            </div>
+        </form>
+    </div>
+    <div class="clear-fix"></div>
+
+    <div id="show_header">BBC News</div>
+    <div id="result">
+        <ul class="pg_contentnews">
+            <?php
+            if ($feeds) {
+                foreach ($feeds as $k => $feed) {
+                    ?>
+                    <li>
+                        <p class="pg_title"><a href="<?= $feed['link']; ?>" target="_blank"><?= $feed['title']; ?></a></p>
+                        <a href="<?= $feed['link']; ?>" target="_blank">
+                            <img src="<?= $feed['thumbnail']; ?>" alt="" style="border:0;"/>
+                        </a>
+                        <p class="pg_content">
+                            <span class="bbc_news_datepost"><?= $feed['date']; ?></span>
+                            <?= $feed['description']; ?><br />
+                            <a href="<?= $feed['link']; ?>" class="pg_more"  target="_blank">more</a>
+                        </p>
+                    </li>
+
+                    <?php
+                }
+            }
+            ?>
+        </ul>
+    </div>
+    <div id="show_footer"></div>
+</div>
+
+

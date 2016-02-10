@@ -1,0 +1,131 @@
+<script>
+    $(function(){
+        $('#btn_add').click(function(){
+            var getError = [];
+            var product = $.trim($('#product').val());
+            var price = $.trim($('#price').val());
+            var type = $.trim($('#type').val());
+            var csrf = $('input[name="security"]').val();
+
+            if(product.length == 0){getError.push('Product field is required')}
+            if(price.length == 0){getError.push('Price field is required')}
+            if(type.length == 0){getError.push('Type field is required')}
+
+            var data = {product:product,price:price,type:type,security:csrf};
+
+            if(getError.length == 0){
+                var result = api.addProduct(data);
+                if(result.response == 200) {
+                    helper.success_msg(result.message);
+                }else if(result.response == 400){
+                    getError.push(result.status);
+                    $.each(result.message, function(k,v){
+                        var key = k.split('_');
+                        key = key.join(' ');
+                        $.each(v, function(k1,v1){
+                            getError.push(key + ': ' + v1);
+                        });
+                    });
+                    helper.check_error(getError);
+                }
+            }else{
+                helper.check_error(getError);
+                return false;
+            }
+
+        });
+        
+        $('#btn_edit_product').click(function(){
+            var getError = [];
+            var product = $.trim($('#product').val());
+            var price = $.trim($('#price').val());
+            var type = $.trim($('#type').val());
+            var id = $('#prod_id').val();
+            var csrf = $('input[name="security"]').val();
+
+            if(product.length == 0){getError.push('Product field is required')}
+            if(price.length == 0){getError.push('Price field is required')}
+            if(type.length == 0){getError.push('Type field is required')}
+
+             var data = {product:product,price:price,type:type,security:csrf};
+
+            if(getError.length == 0){
+                var result = api.updateProduct(id, data);
+                if(result.response == 200){
+                    helper.success_msg(result.message);
+                }else if(result.response == 400){
+                    helper.check_error(['<b>'+result.status+'</b>',result.message]);
+                }else if(result.response == 500){
+                    helper.check_error(['<b>'+result.status+'</b>',result.message]);
+                }else{
+                    helper.check_error(['Internal error.']);
+                }
+                    
+            }else{
+                helper.check_error(getError);
+                return false;
+            }
+
+        });
+
+        $('#modal-close-callsback').click(function(){
+            window.location = api.site_url + '/product';
+        });
+
+    });
+</script>
+<?php
+$form = $this->form;
+$form->prepare();
+$page_title = 'Add Product';
+if ($product) {
+    $form->get('product')->setAttributes(array('value' => $product->product));
+    $form->get('price')->setAttributes(array('value' => $product->price));
+    $form->get('type')->setAttributes(array('value' => $product->type));
+    $form->get('button')->setAttributes(array('class' => 'btn btn-warning',
+        'id' => 'btn_edit_product'))->setLabel('Update');
+    $form->add(array('name' => 'prod_id','type' => 'hidden', 'attributes' => array('value' => $id, 'id' => 'prod_id')));
+    $page_title = 'Edit Product';
+}
+?>
+<div class="container">
+    <div class="page-header">
+        <h2><?= $page_title; ?> <small></small></h2>
+    </div>
+    <div class="col-md-8">
+        <?= $this->form()->openTag($form); ?>
+        <?= $this->formHidden($form->get('security')); ?>
+         <?php
+        if($form->has('prod_id')) {
+            echo $this->formHidden($form->get('prod_id'));
+        }
+        ?>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('product')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('product')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('price')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('price')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('type')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('type')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="btn_add_customer" class="col-sm-2 control-label sr-only"></label>
+            <div class="col-sm-10">
+                <?= $this->formButton($form->get('button')); ?>
+                <a class="btn btn-default" href="<?= $this->url('order-entry'); ?>">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</div>

@@ -1,0 +1,66 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Moli-Site | ' . $this->translate('something soon'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+        ?>
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon-moli.ico'))
+                ->prependStylesheet($this->basePath() . '/css/style.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css');
+        ?>
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery.min.js')
+                ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Moli Site"/>&nbsp;<?php echo $this->translate('Moli Site') ?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="<?php if($this->page == 'index') echo 'active' ?>"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li class="<?php if($this->page == 'samples') echo 'active' ?>"><a href="<?php echo $this->url('main', array('action' => 'samples')) ?>"><?php echo $this->translate('Samples') ?></a></li>
+                        <li class="<?php if($this->page == 'about') echo 'active' ?>"><a href="<?php echo $this->url('main', array('action' => 'about')) ?>"><?php echo $this->translate('About') ?></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <div class="navbar navbar-inverse navbar-fixed-bottom my_footer_class">
+                <div class="container my_footer_class_body">
+                    <footer>
+
+                        <div class="col-sm-4">
+                            Created by: Romulo G. Soriano Jr.
+                        </div>
+                        <div class="col-sm-4">
+                            Gmail: <a href="mailto:romulosorianojr@gmail.com"><strong>@Moli</strong></a>
+                        </div>
+                        <div class="col-sm-4">
+                            Twitter: <a target="_blank" href="https://twitter.com/moli_php"><strong>@moli_php</strong></a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="row">
+        <h1>Samples</h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading color_write">
+                <a href="<?= $this->url('order-entry'); ?>" target="_blank">Order Entry (Using RESTful Service)</a>
+            </div>
+        </div>
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading color_write">
+                <a href="<?= $this->url('calendar-scheduler'); ?>" target="_blank">Calendar Scheduler</a>
+            </div>
+        </div>
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading color_write">
+                <a href="<?= $this->url('animal-quiz'); ?>" target="_blank">Animal Quiz</a>
+            </div>
+        </div>
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading color_write">
+                <a href="<?= $this->url('backbone-js-blog'); ?>" target="_blank">BackboneJS Simple Blog with pagination on parent and child</a>
+            </div>
+        </div>
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading color_write">
+                <a href="<?php echo $this->url('angular-js-crud'); ?>" target="_blank">AngularJS Crud</a>
+            </div>
+        </div>
+        <div class="panel panel-default col-md-6">
+            <div class="panel-heading color_write">
+                <a href="<?php echo $this->basePath('wala-pa-to'); ?>" target="_blank">Wala pa to</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="accordion" class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading color_write">
+                    <div style="padding-left:14px">
+                        <a href="#section1" data-parent="#accordion" data-toggle="collapse" class="collapsed">Web Designs</a>
+                    </div>
+                </div>
+                <div id="section1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="well col-md-2">
+                            <a href="<?= $this->url('web-designs', array('action' => 'design-one')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/web-designs/images/design-one.jpg'); ?>" class="col-md-12"/>
+                            </a>
+                        </div>
+                        <div class="well col-md-2">
+                            <a href="<?= $this->url('web-designs', array('action' => 'design-two')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/web-designs/images/design-two.jpg'); ?>" class="col-md-12" />
+                            </a>
+                        </div>
+                        <div class="well col-md-2">
+                            <a href="<?= $this->url('web-designs', array('action' => 'design-three')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/web-designs/images/design-three.jpg'); ?>" class="col-md-12" />
+                            </a>
+                        </div>
+                        <div class="well col-md-2">
+                            <a href="<?= $this->url('web-designs', array('action' => 'design-four')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/web-designs/images/design-four.jpg'); ?>" class="col-md-12" />
+                            </a>
+                        </div>
+                        <div class="well col-md-2">
+                            <a href="<?= $this->url('web-designs', array('action' => 'design-five')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/web-designs/images/design-five.jpg'); ?>" class="col-md-12" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading color_write">
+                    <div style="padding-left:14px">
+                        <a href="#section2" data-parent="#accordion" data-toggle="collapse" class="collapsed">Widgets</a>
+                    </div>
+                </div>
+                <div id="section2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="well col-md-2">
+                            <p class="text_center">Mini Youtube Search</p>
+                            <a href="<?= $this->url('widgets', array('action' => 'youtube')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/widgets/images/youtube.jpg'); ?>" class="col-md-12"/>
+                            </a>
+                        </div>
+                        <div class="well col-md-2">
+                            <p class="text_center">Analog Clock</p>
+                            <a href="<?= $this->url('widgets', array('action' => 'analog-clock')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/widgets/images/analog-clock.jpg'); ?>" class="col-md-12"/>
+                            </a>
+                        </div>
+                        <div class="well col-md-2">
+                            <p class="text_center">Analog Clock</p>
+                            <a href="<?= $this->url('widgets', array('action' => 'bbc-news')); ?>" target="_blank">
+                                <img src="<?php echo $this->basePath('samples/widgets/images/bbc-news.jpg'); ?>" class="col-md-12"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

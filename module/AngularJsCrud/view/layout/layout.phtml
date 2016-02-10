@@ -1,0 +1,80 @@
+<?php echo $this->doctype(); ?>
+<html lang="en" data-ng-app="callingcardApp">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('AngularJs Crud'); ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon-moli.ico'))
+                ->prependStylesheet($this->basePath('samples/angular-js-crud/css/style.css'))
+                ->prependStylesheet($this->basePath('samples/angular-js-crud/libs/simple-form-validation/simple-form-validation.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/samples/angular-js-crud/libs/simple-form-validation/simple-form-validation.js')
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery.min.js')
+                ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-default" ng-controller="navController">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#/customers" class="navbar-brand">
+                        <img src="<?php echo $this->basePath('samples/angular-js-crud/img/angular-logo.gif'); ?>"/>
+                        AngularJs Crud</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="menu">
+                        <li data-ng-class="{'active':getClass('/customers')}"><a href="#/customers">Customers</a></li>
+                        <li data-ng-class="{'active':getClass('/orders')}"><a href="#/orders">Orders</a></li>
+                        <li data-ng-class="{'active':getClass('/products')}"><a href="#/products">Products</a></li>
+                        <li data-ng-class="{'active':getClass('/action/add/order,/action/add/product,/action/add/customer')}" class="dropdown target_dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="" data-ng-click="toggle_open()">Add <i class="caret"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/add/customer">Customer</a></li>
+                                <li><a href="#/add/order">Order</a></li>
+                                <li><a href="#/add/product">Product</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container view-animate-container">
+            <?php echo $this->content; ?>
+        </div>
+        
+         <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath('samples/angular-js-crud/js/service.js'))
+                ->prependFile($this->basePath('samples/angular-js-crud/js/controller.js'))
+                ->prependFile($this->basePath('samples/angular-js-crud/js/app.js'))
+                ->prependFile($this->basePath('js/angular-animate.min.js'))
+                ->prependFile($this->basePath('js/angular-resource.js'))
+                ->prependFile($this->basePath('js/angular-route.min.js'))
+                ->prependFile($this->basePath('js/angular.min.js'))
+        ;
+        ?>
+        
+    </body>
+</html>

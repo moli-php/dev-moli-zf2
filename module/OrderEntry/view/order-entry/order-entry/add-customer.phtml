@@ -1,0 +1,168 @@
+<script>
+    $(function(){
+        $('#btn_add').click(function(){
+            var getError = [];
+            var first_name = $.trim($('#first_name').val());
+            var last_name = $.trim($('#last_name').val());
+            var address = $.trim($('#address').val());
+            var credit_limit = $('#credit_limit').val();
+            var gender = $.trim($('input[name="gender"]:checked').val());
+            var contacts = $.trim($('#contacts').val());
+            var csrf = $('input[name="security"]').val();
+            var data = {first_name:first_name,last_name:last_name,contacts:contacts,
+                gender:gender,address:address,credit_limit:credit_limit,security:csrf};
+            
+            if(first_name.length == 0){getError.push('First name is required')}
+            if(last_name.length == 0){getError.push('Last name is required')}
+            if(address.length == 0){getError.push('Address is required')}
+            if(contacts.length == 0){getError.push('Contact number is required')}
+            if(gender.length == 0){getError.push('Gender is required')}
+
+            if(getError.length == 0){
+                var result = api.addCustomer(data);
+                if(result.response == 200) {
+                    helper.success_msg(result.message);
+                }else if(result.response == 400){
+                    getError.push(result.status);
+                    $.each(result.message, function(k,v){
+                        var key = k.split('_');
+                        key = key.join(' ');
+                        $.each(v, function(k1,v1){
+                            getError.push(key + ': ' + v1);
+                        });
+                    });
+                    helper.check_error(getError);
+                }
+            }else{
+                helper.check_error(getError);
+                return false;
+            }
+        });
+        
+        $('#btn_edit_customer').click(function(){
+            var getError = [];
+            var first_name = $.trim($('#first_name').val());
+            var last_name = $.trim($('#last_name').val());
+            var address = $.trim($('#address').val());
+            var credit_limit = $('#credit_limit').val();
+            var gender = $.trim($('input[name="gender"]:checked').val());
+            var contacts = $.trim($('#contacts').val());
+            var id = $('#cust_id').val();
+            var csrf = $('input[name="security"]').val();
+            var data = {first_name:first_name,last_name:last_name,
+                contacts:contacts,gender:gender,address:address,
+                credit_limit:credit_limit,security:csrf};
+
+            if(first_name.length == 0){getError.push('First name is required')}
+            if(last_name.length == 0){getError.push('Last name is required')}
+            if(address.length == 0){getError.push('Address is required')}
+            if(contacts.length == 0){getError.push('Contact number is required')}
+            if(gender.length == 0){getError.push('Gender is required')}
+
+            if(getError.length == 0){
+                var result = api.updateCustomer(id, data);
+                if(result.response == 200){
+                    helper.success_msg('Customer successfully updated.');
+                }else if(result.response == 400){
+                     getError.push(result.status);
+                    $.each(result.message, function(k,v){
+                        var key = k.split('_');
+                        key = key.join(' ');
+                        $.each(v, function(k1,v1){
+                            getError.push(key + ': ' + v1);
+                        });
+                    });
+                        helper.check_error(getError);
+                }else{
+                     helper.check_error(['Internal error.']);
+                }
+                        
+                   
+            }else{
+                helper.check_error(getError);
+                return false;
+            }
+
+        });
+
+        $('#modal-close-callsback').click(function(){
+            window.location = api.site_url;
+        });
+
+    });
+</script>
+<?php
+$form = $this->form;
+$form->prepare();
+$page_title = 'Add Customer';
+if ($customer) {
+    $form->get('first_name')->setAttributes(array('value' => $customer->first_name));
+    $form->get('last_name')->setAttributes(array('value' => $customer->last_name));
+    $form->get('address')->setAttributes(array('value' => $customer->address));
+    $form->get('contacts')->setAttributes(array('value' => $customer->contacts));
+    $form->get('credit_limit')->setAttributes(array('value' => $customer->credit_limit));
+    $form->get('gender')->setAttributes(array('value' => $customer->gender));
+    $form->get('button')->setLabel('Edit')->setAttributes(array('class' => 'btn btn-warning', 'id' => 'btn_edit_customer'));
+    $form->add(array('name' => 'cust_id','type' => 'hidden', 'attributes' => array('value' => $id, 'id' => 'cust_id')));
+    $page_title = 'Edit Customer';
+}
+?>
+<div class="container">
+    <div class="page-header">
+        <h2><?= $page_title; ?> <small></small></h2>
+    </div>
+    <div class="col-md-8">
+        <?= $this->form()->openTag($form); ?>
+        <?= $this->formHidden($form->get('security')); ?>
+        <?php
+        if($form->has('cust_id')) {
+            echo $this->formHidden($form->get('cust_id'));
+        }
+        ?>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('first_name')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('first_name')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('last_name')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('last_name')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('address')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('address')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('contacts')); ?>
+            <div class="col-sm-10">
+                <?= $this->formInput($form->get('contacts')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('credit_limit')); ?>
+            <div class="col-sm-3">
+                <?= $this->formSelect($form->get('credit_limit')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('gender')); ?>
+            <div class="col-sm-10">
+                <?= $this->formRadio($form->get('gender')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="btn_add_customer" class="col-sm-2 control-label sr-only">Credit limit</label>
+            <div class="col-sm-10">
+                <?= $this->formButton($form->get('button')); ?>
+                <a class="btn btn-default" href="<?= $this->url('order-entry'); ?>">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</div>

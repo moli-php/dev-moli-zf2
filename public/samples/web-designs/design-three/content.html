@@ -1,0 +1,47 @@
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function()	{
+	$('.btn1').click(function()	{
+	$('#pic_here').hide();
+	$('#pic_here').attr("src", "images/bags01.jpg").fadeIn("fast");		  					  
+	});
+	
+	$('.btn2').click(function()	{
+	$('#pic_here').hide();
+	$('#pic_here').attr("src", "images/bags02.jpg").fadeIn("fast");
+	
+	});
+	
+	$('.btn3').click(function()	{
+	$('#pic_here').hide();
+	$('#pic_here').attr("src", "images/bags03.jpg").fadeIn("fast");					  
+	});
+	
+	$('.btn4').click(function()	{
+	$('#pic_here').hide();
+	$('#pic_here').attr("src", "images/bags04.jpg").fadeIn("fast");			  					  
+	});
+	
+	$('.btn5').click(function()	{
+	$('#pic_here').hide();
+	$('#pic_here').attr("src", "images/bags05.jpg").fadeIn("fast");						  					  
+	});						   						   
+});
+</script>
+</head>
+
+
+<div id="content1">
+    <div id="show_here"><img src='images/bags01.jpg' id="pic_here"/></div>
+    <div id="wrapper_btn">
+        <div class="btn1"></div>
+    	<div class="btn2"></div>
+        <div class="btn3"></div>
+        <div class="btn4"></div>
+        <div class="btn5"></div>
+  </div>
+</div>

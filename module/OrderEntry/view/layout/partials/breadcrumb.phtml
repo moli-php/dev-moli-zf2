@@ -1,0 +1,21 @@
+<div class="container" style="">
+    <?php
+    array_shift($breadCrumb);
+    echo "<ol class='breadcrumb'>";
+    if (count($breadCrumb)) {
+        $pages = "";
+        foreach ($breadCrumb as $index => $segment) {
+            $pages .= $segment . '/';
+            $index++;
+            if (count($breadCrumb) == $index) {
+                echo "<li class='active'>" . $segment . "</li>";
+            } else {
+                echo "<li><a href='" . urldecode($this->url('order-entry', array('action' => $pages))) ."'>" . $segment . "</a></li>";
+            }
+        }
+    } else {
+        echo "<li class='active'>Customer</li>";
+    }
+    echo "</ol>";
+    ?>
+</div>

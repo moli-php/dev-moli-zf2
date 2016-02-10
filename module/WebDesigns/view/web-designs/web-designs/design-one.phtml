@@ -1,0 +1,178 @@
+<?php $mylogo = $this->basePath('samples/web-designs/images/mylogo.jpg'); ?>
+<body>
+    <!-- end #header-wrapper -->
+    <div id="logo">
+        <h1><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Baguio Tours</a></h1>
+
+    </div>
+    <div id="header">
+        <div id="menu">
+            <ul>
+                <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Homepage</a></li>
+                <li class="current_page_item"><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Blog</a></li>
+                <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Portfolio</a></li>
+                <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>About</a></li>
+                <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Contact</a></li>
+            </ul>
+        </div>
+        <!-- end #menu -->
+        <div id="search">
+            <form method="get" action="">
+                <fieldset>
+                    <input type="text" name="s" id="search-text" size="15" />
+                </fieldset>
+            </form>
+        </div>
+        <!-- end #search -->
+    </div>
+    <!-- end #header -->
+    <hr />
+    <!-- end #logo -->
+    <div id="slideshow">
+        <!-- start -->
+        <div id="foobar">
+            <div id="col1"><a href="#" class="previous">&nbsp;</a></div>
+            <div id="col2">
+                <div class="viewer">
+                    <div class="reel">
+                        <div class="slide"><img src="<?php echo $this->basePath('samples/web-designs/design-one/images/1.jpg'); ?>" width="726" height="335" alt="" /> <span>Over looking Baguio City, Picture taken at SM Baguio.</span> </div>
+                        <div class="slide"><img src="<?php echo $this->basePath('samples/web-designs/design-one/images/2.jpg'); ?>" width="726" height="335" alt="" /> <span>Over looking Baguio City, Picture taken at SM Baguio.</span> </div>
+                        <div class="slide"><img src="<?php echo $this->basePath('samples/web-designs/design-one/images/3.jpg'); ?>" width="726" height="335" alt="" /> <span>The Burnham Park, boating area is one of a nice attraction on the City.</span> </div>
+                        <div class="slide"><img src="<?php echo $this->basePath('samples/web-designs/design-one/images/4.jpg'); ?>" width="726" height="335" alt="" /> <span>The Burnham Park, boating area is one of a nice attraction on the City.</span> </div>
+                    </div>
+                </div>
+            </div>
+            <div id="col3"><a href="#" class="next">&nbsp;</a></div>
+        </div>
+        <script type="text/javascript">
+
+            $('#foobar').slidertron({
+                viewerSelector:			'.viewer',
+                reelSelector:			'.viewer .reel',
+                slidesSelector:			'.viewer .reel .slide',
+                navPreviousSelector:	'.previous',
+                navNextSelector:		'.next',
+                navFirstSelector:		'.first',
+                navLastSelector:		'.last'
+            });
+						
+        </script>
+        <!-- end -->
+    </div>
+    <script type="text/javascript" src="<?php echo $this->basePath('js/prototype.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->basePath('js/scriptaculous.js?load=effects,builder'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->basePath('js/lightbox.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php echo $this->basePath('css/lightbox.css'); ?>" type="text/css" media="screen" />
+    <div id="page">
+        <div id="page-bgtop">
+            <div id="content">
+                <div class="post">
+                    <h2 class="title"><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Welcome to Baguio City</a></h2>
+                    <div class="entry">
+                        <p>Every year, <a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The City</a> Celebrates the <a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Pinagbenga Festival.</a> There are lot of events happining and also alot of time in preparation on in Flower Fertival Parade.  You can't wait to taste the delicious strawberries and other delicasies only here in Baguio. At night you will experience the fireworks display for half an hour and midnight shopping on selected places on the city.			</p>
+                        <p>You can also visit some wonderful places in the City like Mines View Park, The Mansion, Crystal Cave, Burnham Park, Flower Farm, Luakan Airport and more...</p>
+                    </div>
+                    <div><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design' class="links">View Full Story</a></div>
+                </div>
+                <div class="post">
+                    <p class="meta"><span class="date">Tbursday, December 9, 2010</span> 7:27 AM Posted by <a href="#">Alex</a></p>
+                    <h2 class="title"><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The Bug</a></h2>
+                    <div class="entry">
+                        <p><img src="<?php echo $this->basePath('samples/web-designs/design-one/images/5.jpg'); ?>" width="560" height="270" alt="" />One of the good thing about this bug, which it helps the flowers on the city to develop and grow faster, because study shows that a bug in your life...</p>
+                    </div>
+                    <div><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design' class="links">View Full Story</a></div>
+                </div>
+            </div>
+            <!-- end #content -->
+            <div id="sidebar">
+                <ul>
+                    <li>
+                        <h2>Officials</h2><div id="official">
+                            <img src="images/offical1.jpg" /></div>
+                        <p>Baguio is the most popular city in the Northern Region of Luzon, because of the good climate and lot of wonderful places to visit. 
+                        </p>
+                        <div style="clear: both;">&nbsp;</div>
+                    </li>
+                    <li>
+                        <h2>Events </h2>
+                        <ul>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>SM Baguio Shows</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Mines View Park</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Burnham Park Fantasy</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Fireworks Display</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The New Crystal Cave</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The SLU Campus Rock</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Penagbenga Festival</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Snow on Session Road</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>Places to visit</h2>
+                        <ul>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Burnham Park</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Crystal Cave</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Mines View Park</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The Mansion</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Botanical Garden</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Strawberry Farm</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Sunflower Farm</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The New Airport</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>Philippine Military Academy</a></li>
+                            <li><a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>The Native Igorot Place</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- end #sidebar -->
+            <div style="clear: both;">&nbsp;</div>
+        </div>
+        <!-- end #page -->
+    </div>
+    <div id="footer">
+        <p>Copyright (c) 2010 Tourbaguio.com All rights reserved. Design by <a href="http://www.moli.0fess.net/">moli s</a>.</p>
+    </div>
+    <!-- end #footer -->
+
+
+    <style>
+        #floatdiv	{
+            position: absolute;
+            width: 54px;
+            height: 54px;
+            background-color: #999;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        #floatdiv:hover	{
+            background-color: blue;
+        }
+        #floatdiv #inside	{
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2px;
+            position: relative;
+            text-align: center;
+        }
+        #floatdiv #inside a	{
+            font-size: .6em;
+            color: black;
+            font-weight: normal;
+        }
+        #floatdiv #inside a:hover	{
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+    <div id="floatdiv">
+        <div id="inside">
+            <a href="<?php echo $mylogo; ?>" rel='lightbox' title='moli&#39;s sample design'>
+                <img src="<?php echo $this->basePath('samples/web-designs/images/mylogo_thumb.gif'); ?>" border="0"/>
+            </a>
+        </div>
+    </div>
+    <script type="text/javascript" src="<?php echo $this->basePath('js/floating.js'); ?>"></script>
+</body>

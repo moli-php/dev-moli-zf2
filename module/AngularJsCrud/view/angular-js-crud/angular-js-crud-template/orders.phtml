@@ -1,0 +1,9 @@
+<h2>Orders</h2>
+<div class="row">
+	<div class="col-md-8" data-ng-repeat="order in orders | orderBy:'last_name'">
+		<div class="indent">
+			<h4><a href="#/profile/{{order.id}}">{{order.first_name + ' ' + order.last_name}}</a></h4>
+		</div>
+		<div data-ng-include="'angular-js-crud-template/orders-table'" />
+	</div>
+</div>

@@ -1,0 +1,45 @@
+body {
+   padding-top: 50px;
+   padding-bottom:40px;
+
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+.my_footer_class {
+display:table;
+width: 100%;
+color: white;
+border-radius: 0px !important;
+margin-bottom:0px !important;
+}
+
+.my_footer_class_body {
+height: 50px;
+display:table-cell;vertical-align:middle;
+margin-bottom:0px !important
+}
+
+.color_write {
+background-color: white !important;
+background-image: none !important;
+border-color: transparent !important;
+}
+
+.banner_img {
+    width: 100%;
+}
+
+.size_18 {
+    font-size: 18px;
+}
+
+.text_center {
+    text-align:center;
+}
+
+
