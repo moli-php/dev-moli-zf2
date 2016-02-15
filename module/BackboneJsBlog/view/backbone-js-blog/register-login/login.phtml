@@ -1,21 +1,58 @@
 <?php
 $form = $this->form;
 $form->prepare();
+
 if (count($successMsg)) {
     foreach ($successMsg as $message) {
-        echo '<p><b class="text-success">' . $message . '</b></p>';
+        echo '<div class="container"><p><b class="text-success">' . $message . '</b></p></div>';
     }
 }
+
 if ($errMsg) {
-    echo '<p><b class="text-danger">' . $errMsg . '</b></p>';
+    echo '<div class="container"><p><b class="text-danger">' . $errMsg . '</b></p></div>';
 }
 ?>
-<h2>Login Form</h2>
 <div class="container">
-    <?php
-    echo $this->form()->openTag($form);
-    echo $this->formCollection($form);
-    echo $this->form()->closeTag();
-    ?>
-    <a href="<?= $this->url('backbone-js-blog-register-login', array('action' => 'register')); ?>">You don't have an account yet?</a>
+    <h2>Login Form </h2>
+    <?php echo $this->form()->openTag($form); ?>
+    <?php echo $this->formHidden($form->get('security')); ?>
+    <div class="form-group">
+        <?php echo $this->formLabel($form->get('email')); ?>
+        <div class='col-md-4'>
+            <?php echo $this->formInput($form->get('email')); ?>
+            <?php echo $this->formElementErrors($form->get('email')); ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formLabel($form->get('password')); ?>
+        <div class="col-md-4">
+            <?php echo $this->formInput($form->get('password')); ?>
+            <?php echo $this->formElementErrors($form->get('password')); ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formLabel($form->get('remember')); ?>
+        <div class="col-md-4">
+            <label class="checkbox-inline">
+                <?php echo $this->formCheckbox($form->get('remember')); ?>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <?php echo $this->formLabel($form->get('submit')); ?>
+        <div class="col-md-1">
+            <?php echo $this->formSubmit($form->get('submit')); ?>
+
+        </div>
+        <div class="con-md-5">
+            <a class="btn" href="<?= $this->url('backbone-js-blog-register-login', array('action' => 'register')); ?>">
+                You don't have an account yet?
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="submit" class="control-label sr-only col-md-2">csrf</label>
+        <div class="col-md-4"><?php echo $this->formElementErrors($form->get('security')); ?></div>
+    </div>
+    <?php echo $this->form()->closeTag(); ?>
 </div>

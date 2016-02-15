@@ -1,23 +1,28 @@
 <div id="forum_forms">
-    <h4 class="col-md-12" id="search_form">
-        <div class="col-md-4">
-            Forum: &nbsp;<i>Welcome <?= $name ?></i>&nbsp;
-            <small>
-                (backbone.js)
-                <a href="<?= $this->url('backbone-js-blog-register-login', array('action' => 'logout')); ?>">Logout?</a>
-            </small>
+    <div class="col-md-12" id="search_form">
+        <div class="col-md-4 col-sm-6 col-xs-12 welcome_blog">
+            <h4>
+                Blog: &nbsp;<i>Welcome <?= $name ?></i>&nbsp;
+                <small>
+                    (backbone.js)
+                    <a href="<?= $this->url('backbone-js-blog-register-login', array('action' => 'logout')); ?>">Logout?</a>
+                </small>
+            </h4>
         </div>
-        <div class="col-md-8">
-            <?php $searchForm->prepare(); ?>
+        <div class="col-md-8 col-sm-6 col-xs-12" id="search_form_con">
+            <?php 
+            $searchForm->setAttributes(array('id' => 'search_form'));
+            $searchForm->prepare(); 
+            ?>
+            
             <?= $this->form()->openTag($searchForm); ?>
             <?= $this->formInput($searchForm->get('blog_search')); ?>
             <?= $this->form()->closeTag(); ?>
         </div>
-    </h4>
-    <br />
-    <br />
-    <hr />
 
+    </div>
+    <div class="clear-fix"></div>
+    <hr>
     <?php
     $form = $this->form;
     $form->get('name')->setAttribute('value', $name);
@@ -32,18 +37,14 @@
         <?= $this->formInput($form->get('user_id')); ?>
         <?= $this->formInput($form->get('username')); ?>
         <div class="form-group">
-            <?= $this->formLabel($form->get('message')); ?>
-            <div class="col-md-4">
-                <?= $this->formInput($form->get('message')); ?>
-            </div>
-            <div class="col-md-1">
-                <?= $this->formInput($form->get('submit')); ?>
-            </div>
+            <?= $this->formInput($form->get('message')); ?>
         </div>
+        <?= $this->formInput($form->get('submit')); ?>
         <?= $this->form()->closeTag(); ?>
     </div>
 </div>
 
+<div class="clear-fix"></div>
 <!-- Backbone Templates -->
 <?= $this->partial('/backbone-js-blog/blog/template/template.phtml'); ?>
 
@@ -57,7 +58,7 @@
 
 <!-- initial backbone data -->
 <script>
-    var forumData = $.parseJSON('<?= json_encode($this->forum); ?>');
+    var forumData = <?= json_encode($this->forum); ?>;
     forumData = _(forumData).sortBy(function(obj) { return -obj.id });
     var username_id = '<?= $user_id ?>';
 </script>
@@ -83,6 +84,8 @@
     });
     new App.View.Forms({
         collection: forumCollection, 
-        collectionCopy : forumCollectionCopy
+        collectionCopy : forumCollectionCopy,
+        routeModel : routeModel,
+        routeForum : routeForum
     });
 </script>

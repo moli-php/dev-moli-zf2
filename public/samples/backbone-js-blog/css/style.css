@@ -1,0 +1,101 @@
+.welcome_blog {
+    padding-top:10px;
+}
+form ul {
+    list-style : none;
+    color : #a94442
+}
+
+#blog {
+    padding-left:0px;
+    height: 35px;
+}
+
+#blog #message {
+    width: 300px;
+}
+
+#add_form {
+    background-color: #ccc;
+    padding : 10px 10px;
+    
+}
+
+#forum_replies #message {
+    width: 300px;
+}
+
+#replies {
+margin-left: 20px;
+padding-top: 30px;
+}
+
+.posted_date {
+    color : gray;
+    font-size: .9em;
+}
+
+.reply_message {
+    padding-left:15px;
+}
+
+.padding_l15 {
+    padding-left : 15px;
+}
+
+.clear-fix {
+    clear:both;
+}
+
+
+#search_form_con {
+    margin-top: 10px;
+}
+
+@media(max-width:1199px) {
+    #search_form_con {
+        margin-top:22px;
+        padding-left: 0px;
+    }
+}
+
+@media(max-width:767px) {
+    #blog .form-group, #forum_replies .form-group {
+        float : left;
+    }
+    
+    #blog #submit, #forum_replies #submit {
+        float : left;
+    }
+    
+    #search_form_con {
+        margin-top : 0px;
+    }
+    
+    #replies {
+        padding-top:0px;
+    }
+}
+
+@media(max-width:432px) {
+        #forum_replies .form-group {
+        height: 21px;
+    }
+}
+@media(max-width:422px) {
+    #blog .form-group {
+        margin-bottom: 0px;
+    }
+    #add_form {
+       height: 92px;
+    }
+    
+}
+
+@media(max-width:350px) {
+     #blog .form-group, #blog #message, #forum_replies .form-group, #forum_replies #message {
+        width:100%
+    }
+
+}
+

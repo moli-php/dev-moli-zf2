@@ -22,9 +22,12 @@ class RegisterForm extends Form {
             'type' => 'text',
             'options' => array(
                 'label' => 'Name',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
             ),
             'attributes' => array(
-                'id' => 'nae',
+                'id' => 'name',
                 'class' => 'form-control',
                 'placeholder' => 'Insert you name'
             )
@@ -35,6 +38,9 @@ class RegisterForm extends Form {
             'type' => 'text',
             'options' => array(
                 'label' => 'Email',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
             ),
             'attributes' => array(
                 'id' => 'username',
@@ -48,6 +54,9 @@ class RegisterForm extends Form {
             'type' => 'password',
             'options' => array(
                 'label' => 'Password',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
             ),
             'attributes' => array(
                 'id' => 'password',
@@ -61,6 +70,9 @@ class RegisterForm extends Form {
             'type' => 'password',
             'options' => array(
                 'label' => 'Re-enter password',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
             ),
             'attributes' => array(
                 'id' => 'password2',
@@ -74,8 +86,14 @@ class RegisterForm extends Form {
         $this->add(array(
             'name' => 'submit',
             'type' => 'submit',
+            'options' => array(
+                'label' => 'submit',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2 sr-only'
+                )
+            ),
             'attributes' => array(
-                'class' => 'btn btn-primary pull-right',
+                'class' => 'btn btn-primary',
                 'id' => 'submit',
                 'value' => 'Register'
             )

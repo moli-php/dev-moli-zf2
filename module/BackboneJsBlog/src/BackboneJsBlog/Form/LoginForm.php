@@ -24,6 +24,9 @@ class LoginForm extends Form
             'type' => 'text',
             'options' => array(
                 'label' => 'Email',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
             ),
             'attributes' => array(
                 'id' => 'email',
@@ -37,6 +40,9 @@ class LoginForm extends Form
             'type' => 'password',
             'options' => array(
                 'label' => 'Password',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
             ),
             'attributes' => array(
                 'id' => 'password',
@@ -45,13 +51,34 @@ class LoginForm extends Form
             )
         ));
         
+        $this->add(array(
+            'name' => 'remember',
+            'type' => 'checkbox',
+            'options' => array(
+                'label' => 'Remember me',
+                'label_attributes' => array(
+                    'class' => 'control-label col-md-2'
+                )
+            ),
+            'attributes' => array(
+                'value' => 'remember'
+            )
+            
+        ));
+        
       
         
         $this->add(array(
             'name' => 'submit',
             'type' => 'submit',
+            'options' => array(
+                'label' => 'submit',
+                'label_attributes' => array(
+                    'class' => 'control-label sr-only col-md-2'
+                )
+            ),
             'attributes' => array(
-                'class' => 'btn btn-primary pull-right',
+                'class' => 'btn btn-primary',
                 'id' => 'submit',
                 'value' => 'Login'
             )

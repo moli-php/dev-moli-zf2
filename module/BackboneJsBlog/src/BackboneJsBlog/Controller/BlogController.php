@@ -26,7 +26,7 @@ class BlogController extends BaseController {
         $data['searchForm'] = $sm->get('BackboneJsBlogSearchForm');
         $data['forum'] = $blog->getBlog();
         $this->layout()->setTemplate('BACKBONE_JS_BLOG_LAYOUT_TEMPLATE');
-
+        
         return new ViewModel($data);
         
     }

@@ -38,7 +38,7 @@ class BlogTable {
         return $this->tableGateway->getLastInsertValue();
     }
     
-    public function deleteDelete($id) {
+    public function deleteBlog($id) {
         
         return $this->tableGateway->delete(array('id' => $id));
         

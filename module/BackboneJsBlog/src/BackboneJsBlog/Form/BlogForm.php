@@ -14,7 +14,7 @@ class BlogForm extends Form
     {
         parent::__construct('blog');
         
-        $this->setAttributes(array('method'=>'post', 'class' => 'form form-horizontal','role' => 'form'));
+        $this->setAttributes(array('method'=>'post', 'class' => 'form form-inline','role' => 'form'));
         $this->setInputFilter(new BlogFilter());
         
         

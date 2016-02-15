@@ -85,6 +85,21 @@ class RegisterFilter extends InputFilter
             )
 
         ));
+        
+        $this->add(array(
+            'name' => 'security',
+            'validators' => array(
+                array(
+                    'name' => 'NotEmpty',
+                    'options' => array(
+                        'messages' => array(
+                            'isEmpty' => 'Security token expired. Please refresh the page.',
+                        )
+                    )
+                ),
+              
+            )
+        ));
 
         
         

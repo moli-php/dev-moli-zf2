@@ -40,9 +40,9 @@ App.Model.PaginatorModel = Backbone.Model.extend({
 var routeModel = new App.Model.RouteModel();
 
 App.Route.Forum = Backbone.Router.extend({
-    initialize : function() {
-        Backbone.history.start();
-    },
+//    initialize : function() {
+//        Backbone.history.start();
+//    },
     
     routes :  {
         '' : 'index',
@@ -77,34 +77,58 @@ App.Route.Forum = Backbone.Router.extend({
             'thread_id':thread_id, 
             'thread_page':thread_page
         });
+    },
+    
+    reset : function() {
+        this.navigate('/');
+        this.index();
     }
   
 })
 
 var routeForum = new App.Route.Forum();
+Backbone.history.start();
+
 
 function formatDate(data) {
+   
+    var aMonth = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+    
     if(data) {
         data = data.split(" ");
-        var date = data[0];
+        var date = data[0].split("-");
+        var year = date[0];
+        var month = date[1];
+        var day = date[2];
         var time = data[1].split(":");
         var hours = time[0];
         var minutes = time[1];
         var ampm = hours > 12 ? 'pm' : 'am';
+        
         hours = hours > 12 ? hours - 12 : (hours == 0 ? 12 : hours);
-        //        minutes = minutes < 10 ? '0' + minutes : minutes;
-        return date + ' at ' + hours + ':' + minutes + ' ' + ampm;
+        return aMonth[parseInt(month)-1] + ' ' + day + ', ' + year + ' at ' + hours + ':' + minutes + ' ' + ampm;
     }else{
         var d = new Date();
         var hours = d.getHours() < 10 ? '0' + d.getHours() : d.getHours();
         var minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
         var seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
         var day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate();
-        var month = d.getMonth() + 1;
-        month = month < 10 ? '0' + month : month;
+        var month = d.getMonth();
         var year = d.getFullYear();
-        return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        return  aMonth[month] + ' ' + day + ', ' + year + ' at ' + hours + ':' + minutes + ':' + seconds;
     }
+}
+
+function newDate() {
+    var d = new Date();
+    var hours = d.getHours() < 10 ? '0' + d.getHours() : d.getHours();
+    var minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+    var seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
+    var day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate();
+    var month = (d.getMonth() + 1) < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1;
+    var year = d.getFullYear();
+    return  year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
 }
 
 
@@ -375,7 +399,6 @@ App.View.Thread = Backbone.View.extend({
     },
     
     render : function() {
-       
         this.model.set('formatDate', formatDate(this.model.get('date')), {
             silent:true
         });
@@ -413,12 +436,12 @@ App.View.Thread = Backbone.View.extend({
         var model = this.repliesCollection.get(id);
         this.repliesCollection.remove(model);
         model.destroy();
-//        model.destroy({
-//            success: function(data, response){
-//                console.log(data.toJSON());
-//                console.log(response);
-//            }
-//        });
+        //        model.destroy({
+        //            success: function(data, response){
+        //                console.log(data.toJSON());
+        //                console.log(response);
+        //            }
+        //        });
         
         this.model.set('replies',this.repliesCollection.toJSON(),{
             silent:true
@@ -442,14 +465,14 @@ App.View.Thread = Backbone.View.extend({
         var message = $.trim(form.find('#message').val());
         var user_id = form.find('#user_id').val();
         var forum_id = this.routeModel.get('thread_id');
-        var date = formatDate();
+        var date = newDate();
         var name = form.find('#name').val();
         var username = form.find('#username').val();
         var raw_data = {
             forum_id:forum_id, 
             user_id:user_id, 
             message:message, 
-            date:date,
+            date: date,
             name : name,
             username : username,
             formatDate : formatDate(date)
@@ -481,22 +504,22 @@ App.View.Thread = Backbone.View.extend({
 
        
 
-//            if(_.size(getRelies)){
-//                getRelies.unshift(raw_data);
-//                data = getRelies;
-//            }
-//            this.model.set('replies', data,{silent:true});
-//            this.model.save(null,{
-//                success : function(all, response){
-//                    raw_data.id = response.last_id;
-//
-//                    data[0].id = raw_data.id;
-//                    that.model.set('replies', data,{silent:true});
-//                    that.model.trigger('change');
-//                    form.find('#message').val("");
-//
-//                }
-//            });
+        //            if(_.size(getRelies)){
+        //                getRelies.unshift(raw_data);
+        //                data = getRelies;
+        //            }
+        //            this.model.set('replies', data,{silent:true});
+        //            this.model.save(null,{
+        //                success : function(all, response){
+        //                    raw_data.id = response.last_id;
+        //
+        //                    data[0].id = raw_data.id;
+        //                    that.model.set('replies', data,{silent:true});
+        //                    that.model.trigger('change');
+        //                    form.find('#message').val("");
+        //
+        //                }
+        //            });
         
         
         
@@ -591,6 +614,8 @@ App.View.Forum = Backbone.View.extend({
 App.View.Forms = Backbone.View.extend({
     initialize : function(opts) {
         this.collectionCopy = opts.collectionCopy;
+        this.routeModel = opts.routeModel;
+        this.routeForum = opts.routeForum;
     },
     
     el : '#forum_forms',
@@ -640,6 +665,17 @@ App.View.Forms = Backbone.View.extend({
     searchForum : function(e) {
         var data = $(e.currentTarget).val();
         var searchedData = [], resetData = [];
+        var routeModel = this.routeModel;
+        var routeForum = this.routeForum;
+        // if condition are meet, reset url to default 
+        // while searching to avoid opened child replies.
+        if(routeModel.get('page') != 1){
+            routeForum.reset();
+        }else{
+            if(routeModel.get('thread_id')){
+                routeForum.reset();
+            }
+        }
        
         this.collectionCopy.filter(function(model){
             resetData.push(model);

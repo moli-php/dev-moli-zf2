@@ -24,8 +24,11 @@ class RegisterLoginController extends BaseController {
         
         if ($request->isPost()) {
             $form->setData($request->getPost());
-
+            
+//            $form->isValid();
+//            var_dump($form->getMessages());
             if ($form->isValid()) {
+                
                 $data = $form->getData();
                 
                 $this->getAuthService()->getAdapter()
@@ -34,6 +37,10 @@ class RegisterLoginController extends BaseController {
                 
                 $result = $this->getAuthService()->authenticate();
                 if($result->isValid()){
+                    
+                    if($request->getPost('remember') == 1) {
+                        $this->getSessionStorage()->setRememberMe(1);
+                    }
                     
                      $resultRow = $this->getAuthService()->getAdapter()->getResultRowObject();
                       $this->getAuthService()->getStorage()->
@@ -87,6 +94,7 @@ class RegisterLoginController extends BaseController {
     public function logoutAction() {
         if ($this->getAuthService()->hasIdentity()) {
             $this->getAuthService()->clearIdentity();
+            $this->getSessionStorage()->forgetMe();
         }
         return $this->redirect()->toRoute('backbone-js-blog-register-login', array('action' => 'login'));
     }
