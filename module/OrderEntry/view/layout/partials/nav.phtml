@@ -11,14 +11,14 @@
         </div>
         <div>
             <ul class="nav navbar-nav" id="navbar-collapse">
-                <li class="actvie"><a href="<?= $this->url('order-entry'); ?>">Customers</a></li>
-                <li class="actvie"><a href="<?= $this->url('order-entry', array('action' => 'product')); ?>">Products</a></li>
-                <li class="actvie"><a href="<?= $this->url('order-entry', array('action' => 'profile')); ?>">Profiles</a></li>
+                <li class="<?php if($page == 'customer') echo 'active'; ?>"><a href="<?= $this->url('order-entry'); ?>">Customers</a></li>
+                <li class="<?php if($page == 'product') echo 'active'; ?>"><a href="<?= $this->url('order-entry', array('action' => 'product')); ?>">Products</a></li>
+                <li class="<?php if($page == 'profile') echo 'active'; ?>"><a href="<?= $this->url('order-entry', array('action' => 'profile')); ?>">Profiles</a></li>
             </ul>
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="<?php if ($page == 'payment') echo 'active'; ?>">
+                <li class="<?php if ($page == 'payment-by-name' || $page == 'payment-by-date') echo 'active'; ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Payments <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?= $this->url('order-entry', array('action' => 'payment-by-date')); ?>">Order by date</a></li>
@@ -28,7 +28,7 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="<?php if ($page == 'purchase') echo 'active'; ?>">
+                <li class="<?php if ($page == 'purchase-by-name' || $page == 'purchase-by-date') echo 'active'; ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Purchases <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?= $this->url('order-entry', array('action' => 'purchase-by-date')); ?>">Order by date</a></li>
@@ -38,7 +38,7 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="<?php if ($page == 'add') echo 'active'; ?>">
+                <li class="<?php if ($page == 'add-customer' || $page == 'add-product' || $page == 'add-order') echo 'active'; ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?= $this->url('order-entry', array('action' => 'add-customer')); ?>">Customer</a></li>
