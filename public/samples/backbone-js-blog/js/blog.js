@@ -20,6 +20,11 @@ App.Model.Forum = Backbone.Model.extend({
     urlRoot : '/backbone-js-blog-api/api'
 });
 
+App.Collection.Forum = Backbone.Collection.extend({
+    model : App.Model.Forum,
+    url : '/backbone-js-blog-api/api'
+});
+
 App.Model.RouteModel = Backbone.Model.extend({
     defaults : {
         page : 0,
@@ -131,12 +136,6 @@ function newDate() {
     return  year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
 }
 
-
-App.Collection.Forum = Backbone.Collection.extend({
-    model : App.Model.Forum,
-    url : '/backbone-js-blog-api/api'
-});
-
 App.Model.Reply = Backbone.Model.extend({
     defaults : {
         date : '',
@@ -149,7 +148,6 @@ App.Model.Reply = Backbone.Model.extend({
         username : ''
     },
     urlRoot : '/backbone-js-blog-api/reply-api'
-    
 })
 
 App.Collection.Replies = Backbone.Collection.extend({
@@ -468,6 +466,9 @@ App.View.Thread = Backbone.View.extend({
         var date = newDate();
         var name = form.find('#name').val();
         var username = form.find('#username').val();
+        
+//        console.log(this.$el.find('#message').val())
+        
         var raw_data = {
             forum_id:forum_id, 
             user_id:user_id, 
@@ -487,14 +488,18 @@ App.View.Thread = Backbone.View.extend({
         this.repliesCollection.fetch({
             data: raw_data,
             type: 'POST',
-            dataType:'json',
-            async : true
+//            async : true,
+            dataType:'json'
         }).done(function(result){
+            // add the last id from raw_data responsed from the server
             raw_data.id = result.last_id;
+            // if replies is not empty, prepend the raw_data from getRelies
+            // and set the new value of data
             if(_.size(getRelies)){
                 getRelies.unshift(raw_data);
                 data = getRelies;
             }
+            //then set the new value of replies in the model
             that.model.set('replies',data,{
                 silent:true
             });
@@ -520,9 +525,6 @@ App.View.Thread = Backbone.View.extend({
         //
         //                }
         //            });
-        
-        
-        
         
 
         //        this.model.save(raw_data, {patch:true, success : function(daa, response){

@@ -10,11 +10,9 @@ use BackboneJsBlog\Model\Blog;
 
 class BlogApiController extends BaseController {
 
-
     public function apiAction() {
-        
-        $this->isAuth();
 
+        $this->isAuth();
         $sm = $this->getServiceLocator();
         $request = $this->getRequest();
         $form = $this->getServiceLocator()->get('BackboneJsBlogForm');
@@ -22,10 +20,11 @@ class BlogApiController extends BaseController {
         $blogService = $sm->get('BackboneJsBlog\Service\Blog');
         $replyTable = $sm->get('BackboneJsBlog\Model\BlogRepliesTable');
         $response = array();
-        
+
         if ($request->isXmlHttpRequest()) {
+            // save Blog
             if ($request->isPost()) {
-                // save Blog
+                
                 $form->setData($request->getPost());
                 if ($form->isValid()) {
                     $blog = new Blog();
@@ -34,17 +33,12 @@ class BlogApiController extends BaseController {
                         $response = $blogService->getBlog();
                     }
                 }
-                
-            } elseif ($request->isPut()) {
-            
+            // delete blog
             } elseif ($request->isDelete()) {
-                
-                $contents = json_decode($request->getContent(),true);
+                $contents = json_decode($request->getContent(), true);
                 $id = $this->params()->fromRoute('id', null);
                 $response = array('result' => $blogTable->deleteBlog($id));
-                
-            } elseif($request->isPatch())  {
-                
+            // view blog
             } else {
                 $response = $blogService->getBlog();
             }
@@ -53,9 +47,8 @@ class BlogApiController extends BaseController {
     }
 
     public function replyApiAction() {
-        
-        $this->isAuth();
 
+        $this->isAuth();
         $sm = $this->getServiceLocator();
         $request = $this->getRequest();
         $replyTable = $sm->get('BackboneJsBlog\Model\BlogRepliesTable');
@@ -63,7 +56,7 @@ class BlogApiController extends BaseController {
         $response = array();
 
         if ($request->isXmlHttpRequest()) {
-
+            // save reply
             if ($request->isPost()) {
                 $form->setData($request->getPost());
                 if ($form->isValid()) {
@@ -71,13 +64,13 @@ class BlogApiController extends BaseController {
                     $Replies->exchangeArray($request->getPost());
                     $response = array('last_id' => $replyTable->saveReply($Replies));
                 }
-            }elseif($request->isDelete()){
+            // delete reply
+            } elseif ($request->isDelete()) {
                 $id = $this->params()->fromRoute('id', null);
                 $response = array('result' => $replyTable->deleteReply($id));
             }
         }
         return new JsonModel($response);
     }
-
 
 }
